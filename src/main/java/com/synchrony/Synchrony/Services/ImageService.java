@@ -42,4 +42,22 @@ public class ImageService {
 		byte[] b=ImageUtils.decompressImage(ie.get().getImageData());
 		return b;
 	}
+
+	public byte[] deleteImage(String imageName) throws Exception {
+		// TODO Auto-generated method stub
+		Optional<ImageEntitiy> ie=imageRepo.findByName(imageName);
+		imageRepo.deleteImageByName(imageName);
+		if(ie.isEmpty())
+		{
+			throw new Exception("fileName "+imageName+" is not present");
+		}
+		byte[] b=ImageUtils.decompressImage(ie.get().getImageData());
+		return b;
+	}
+	
+//	public String deleteImage(String imageName) throws Exception {
+//		// TODO Auto-generated method stub
+//		imageRepo.deleteImageByName(imageName);
+//		return "success";
+//	}
 }

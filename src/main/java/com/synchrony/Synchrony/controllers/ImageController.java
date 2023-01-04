@@ -40,5 +40,20 @@ public class ImageController {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(b);
 		
 	}
+	@RequestMapping(method=RequestMethod.DELETE , path="/image/{imageName}")
+	public ResponseEntity<?> deleteImage(@PathVariable String imageName) throws Exception
+	{
+		byte b[]=imageService.deleteImage(imageName);
+		
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(b);
+	}
+	
+//	@RequestMapping(method=RequestMethod.DELETE , path="/image/{imageName}")
+//	public String deleteImage(@PathVariable String imageName) throws Exception
+//	{
+//		String s=imageService.deleteImage(imageName);
+//		
+//		return s;
+//	}
 
 }
